@@ -11,8 +11,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 public class PotatoSacks {
     public static void main(String[] args) throws FileNotFoundException {
-        File input = new File("src/input.txt");
-        Scanner scan = new Scanner(input);
+        Scanner scan = new Scanner(System.in);
         
         int x = scan.nextInt();
         
@@ -54,12 +53,9 @@ public class PotatoSacks {
         
         for(int i = index; i < potatoes.length; i++)
         {
-            if(currentWeight + potatoes[i] <= maxWeight)
+            if(currentWeight + potatoes[i] <= maxWeight && checkForExactWeight(potatoes, currentWeight + potatoes[i], maxWeight, i + 1))
             {
-                if(checkForExactWeight(potatoes, currentWeight + potatoes[i], maxWeight, i + 1))
-                {
-                    return true;
-                }
+                return true;
             }
         }
         return false;
